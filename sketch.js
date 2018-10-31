@@ -5,6 +5,7 @@ var positionX = [];
 var positionY = [];
 var velocityX = [];
 var velocityY = [];
+var names = [];
 
 function preload(){
   myData = loadJSON('assets/name.json');
@@ -57,15 +58,15 @@ function draw() {
   }
     //console.log(num);
 }
-  ball(l);
+  ball();
 
 }
 
 ////////////////////////////////////////////////////////////////
 
-function ball(_l){
+function ball(){
 
-  this.l = _l;
+  //this.l = _l;
 
   for (var particleA = 0; particleA < mass.length; particleA++) {
     var accelerationX = 0, accelerationY = 0;
@@ -101,11 +102,12 @@ function ball(_l){
     textSize(10);
     textAlign(CENTER);
     fill(64, 255, 255, 192);
-    text(this.l, positionX[particle], positionY[particle]);
+    text(names[particle], positionX[particle], positionY[particle]);
     }
 
   }
 
+var index = 0;
 
 function addNewParticle() {
 
@@ -114,6 +116,8 @@ function addNewParticle() {
       positionY.push(mouseY);
       velocityX.push(0);
       velocityY.push(0);
+      names.push(myData.data[index][11]);
+      index++;
 
 }
 
